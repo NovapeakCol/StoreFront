@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* VELOZ design system — dark-first, single electric accent (volt lime) */
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* VOLT — used as a fill, ring or decoration, never as text on light surfaces */
+    --primary: 74 100% 55%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 4%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 74 100% 55%;
+
+    /* Sharp geometry */
+    --radius: 0.25rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(0 0% 4% / 0.1) 0%,
+      hsl(0 0% 4% / 0.55) 52%,
+      hsl(0 0% 4% / 0.97) 100%
+    );
+    --gradient-hero-side: linear-gradient(
+      100deg,
+      hsl(0 0% 4% / 0.92) 0%,
+      hsl(0 0% 4% / 0.45) 45%,
+      hsl(0 0% 4% / 0) 78%
+    );
+    --gradient-carbon: linear-gradient(160deg, hsl(0 0% 12%) 0%, hsl(0 0% 4%) 100%);
+    --gradient-volt: linear-gradient(135deg, hsl(74 100% 62%) 0%, hsl(84 96% 44%) 100%);
+    --gradient-hairline: linear-gradient(
+      90deg,
+      hsl(0 0% 100% / 0) 0%,
+      hsl(0 0% 100% / 0.14) 50%,
+      hsl(0 0% 100% / 0) 100%
+    );
+
+    /* Elevation (dark-optimized: deep black + hairline highlight) */
+    --shadow-xs: 0 1px 2px hsl(0 0% 0% / 0.4);
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.45);
+    --shadow-md: 0 12px 32px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 28px 60px hsl(0 0% 0% / 0.6);
+    --shadow-hairline: inset 0 1px 0 hsl(0 0% 100% / 0.06);
+    --shadow-volt: 0 0 0 1px hsl(74 100% 55% / 0.45), 0 10px 36px hsl(74 100% 55% / 0.16);
+    --shadow-volt-glow: 0 10px 30px -10px hsl(74 100% 55% / 0.55);
+
+    /* Motion */
+    --duration-fast: 150ms;
+    --duration-base: 240ms;
+    --duration-slow: 420ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-out-quint: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-lift: transform var(--duration-base) var(--ease-out-quint),
+      box-shadow var(--duration-base) var(--ease-out-quint);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+    font-synthesis-weight: none;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(0 0% 22%);
+    border: 2px solid hsl(var(--background));
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0 0% 30%);
+  }
+}
+
+@layer components {
+  /* Eyebrow / micro label */
+  .label-eyebrow {
+    @apply font-body text-[0.68rem] font-semibold uppercase leading-none tracking-[0.2em];
+  }
+
+  /* Oversized display type */
+  .display-hero {
+    @apply font-display uppercase leading-[0.88] tracking-[-0.015em];
+  }
+
+  .display-section {
+    @apply font-display text-[2.25rem] uppercase leading-[0.92] tracking-[-0.01em] sm:text-[3rem];
+  }
+
+  /* Outlined headline accent */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px hsl(var(--foreground) / 0.5);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bg-hairline {
+    background-image: var(--gradient-hairline);
+  }
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
